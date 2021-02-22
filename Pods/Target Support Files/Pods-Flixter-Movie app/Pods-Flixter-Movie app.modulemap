@@ -1,0 +1,6 @@
+framework module Pods_Flixter_Movie_app {
+  umbrella header "Pods-Flixter-Movie app-umbrella.h"
+
+  export *
+  module * { export * }
+}
