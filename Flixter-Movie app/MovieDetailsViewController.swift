@@ -23,7 +23,10 @@ class MovieDetailsViewController: UIViewController {
         
         //print(movie["title"])
         titleLabel.text = movie["title"] as? String
+        titleLabel.sizeToFit() //after setting the text, grow label until can fit eberyhting
+        
         synopsisLabel.text = movie["overview"] as? String
+        synopsisLabel.sizeToFit()
         let baseUrl = "https://image.tmdb.org/t/p/w185"
         let posterPath = movie["poster_path"] as! String
         let posterUrl = URL(string: baseUrl + posterPath)//like a string but enforces http etc.
