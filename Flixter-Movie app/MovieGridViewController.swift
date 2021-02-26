@@ -22,7 +22,19 @@ class MovieGridViewController: UIViewController, UICollectionViewDataSource,
         
         collectionView.delegate = self
         collectionView.dataSource = self
-
+        //layout stuff here:
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.minimumLineSpacing = 4 //space btwn rows
+        layout.minimumInteritemSpacing = 4 //when 0 then overlapping tight fit of 3 psoters
+        
+        let width = (view.frame.size.width - layout.minimumInteritemSpacing * 2) / 3 //will chnage dep on user's phone
+        //the 2 is because 3 poster n-1 is 2 so grid spaced now because we want space between psoters
+        //the divide by 3 is because we wnt 3 posters
+        layout.itemSize = CGSize(width: width, height: width * 1.5)
+        //problem is wierd cropping  though
+        
+        
         let url = URL(string: "https://api.themoviedb.org/3/movie/297762/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
